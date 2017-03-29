@@ -1,0 +1,24 @@
+---
+- hosts: all
+
+  pre_tasks:
+    - name: Update apt cache.
+      apt: update_cache=yes cache_valid_time=600
+      when: ansible_os_family == 'Debian'
+
+    - name: Install test dependencies.
+      package: name=curl state=present
+
+    - name: Create a test user
+      user:
+        name: test
+        shell: /bin/bash
+        createhome: True
+        comment: Test User
+
+  vars:
+    docker_users:
+      - test
+
+  roles:
+    - role_under_test

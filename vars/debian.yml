@@ -1,0 +1,9 @@
+---
+
+docker_deps:
+  - curl
+  - apt-transport-https
+  - ca-certificates
+
+docker_gpgkey: https://apt.dockerproject.org/gpg
+docker_gpg_signature: 58118E89F3A912897C070ADBF76221572C52609D

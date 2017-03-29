@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+  pre_tasks:
+    - name: Create a test user
+      user:
+        name: test
+        shell: /bin/bash
+        createhome: True
+        comment: Test User
+  vars:
+    docker_users:
+      - test
+  roles:
+    - ansible-role-docker

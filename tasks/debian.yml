@@ -1,0 +1,18 @@
+---
+
+- name: Install docker dependencies
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ docker_deps }}"
+
+- name: Add docker official GPG key
+  apt_key:
+    url: "{{ docker_gpgkey }}"
+    state: present
+    id: "{{ docker_gpg_signature }}"
+
+- name: Add docker official repo
+  apt_repository:
+    repo: "{{ docker_apt_repo }}"
+    state: present

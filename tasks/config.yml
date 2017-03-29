@@ -1,0 +1,14 @@
+---
+
+- name: Install docker
+  package:
+    name: "{{ docker_package_name }}"
+    state: present
+
+- name: Add users to Docker group
+  become_user: root
+  user:
+    name: "{{ item }}"
+    group: "{{ docker_group_name }}"
+  with_items: "{{ docker_users }}"
+  notify: restart docker

@@ -1,0 +1,13 @@
+---
+
+docker_pip_package: docker
+
+docker_package_name: docker-engine
+
+docker_group_name: docker
+
+docker_users: []
+
+docker_compose: True
+docker_compose_version: "1.11.2"
+docker_compose_url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64

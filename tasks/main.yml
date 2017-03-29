@@ -1,0 +1,17 @@
+---
+
+- name: Include OS-specific vars file
+  include_vars: "{{ ansible_os_family | lower }}.yml"
+
+- name: Ensure docker py is installed
+  pip:
+    name: "{{ docker_pip_package }}"
+    state: present
+
+- name: Include OS-specific tasks file
+  include: "{{ ansible_os_family | lower }}.yml"
+
+- include: config.yml
+
+- include: compose.yml
+  when: docker_compose

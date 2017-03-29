@@ -1,0 +1,14 @@
+---
+
+- name: Add Docker GPG key
+  rpm_key:
+    key: "{{ docker_gpgkey }}"
+    state: present
+
+- name: Add Docker Repository
+  yum_repository:
+    name: docker
+    description: docker repo
+    baseurl: "{{ docker_yum_repo }}"
+    gpgcheck: yes
+    gpgkey: "{{ docker_gpgkey }}"
