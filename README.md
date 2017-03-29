@@ -122,7 +122,7 @@ Example Playbook
 ```
     - hosts: all
       roles:
-         - { role: darkraiden.ansible-aws_cli }
+         - darkraiden.ansible-docker
 ```
 
 License
